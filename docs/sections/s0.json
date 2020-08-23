@@ -1,0 +1,52 @@
+{
+  "name": "s0",
+  "height": 768,
+  "frames": [
+    {
+      "name": "f0",
+      "x": 24,
+      "y": 24,
+      "width": 552,
+      "height": 360,
+      "captions": [
+        {
+          "name": "c0",
+          "x": -168,
+          "y": -72,
+          "html": "Caption 1"
+        },
+        {
+          "name": "c1",
+          "x": 144,
+          "y": 96,
+          "html": "Caption 2"
+        }
+      ],
+      "images": [
+        {
+          "name": "i0",
+          "x": 0,
+          "y": 0,
+          "width": 576,
+          "src": "images/image.svg"
+        }
+      ]
+    },
+    {
+      "name": "f1",
+      "x": 24,
+      "y": 408,
+      "width": 552,
+      "height": 360,
+      "captions": [
+        {
+          "name": "c0",
+          "x": -48,
+          "y": -48,
+          "html": "Caption 3",
+          "crop": false
+        }
+      ]
+    }
+  ]
+}

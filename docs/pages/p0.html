@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="../">
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <script type="module">
+    const ua = window.navigator.userAgent
+    if (ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1 ||
+        (ua.indexOf('Android') !== -1 && ua.indexOf('Mobile') !== -1)) {
+      const el = document.querySelector('meta[name=viewport]')
+      el.setAttribute('content', 'width=600')
+    }
+  </script>
+  <title></title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/restart-section.css">
+  <style>
+    .s1 .f0 {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <script type="module">
+    import { App, Section } from './js/app.js'
+    import { RestartSection } from './js/restart-section.js'
+
+    const main = async () => {
+      const app = new App()
+      const propsList = await Promise.all([
+        app.init(),
+        app.loadJSON('sections/s1.json')
+      ])
+      propsList.shift()
+
+      const index = parseInt(location.hash.substring(1), 10)
+      const captionText = 'Selected: Option ' + (index + 1)
+      propsList[0].frames[0].captions[0].html = captionText
+
+      const sections = [ new Section(propsList[0]), new RestartSection() ]
+
+      for (const section of sections) {
+        await app.loadSection(section)
+      }
+
+      if (location.hostname === 'localhost') {
+        app.editable()
+      }
+    }
+
+    main()
+  </script>
+</body>
+</html>
