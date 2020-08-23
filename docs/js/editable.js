@@ -444,7 +444,7 @@ export class Editable {
         right: 0;
       }`,
       `._editable_grid .section {
-        background-image: url('data:image/svg+xml;utf8,${Editable.GRID_SVG}');
+        background-image: url('data:image/svg+xml;base64,${window.btoa(Editable.GRID_SVG)}');
         background-position: right .5px bottom .5px;
       }`,
       `._editable_grid .frame {
