@@ -25,13 +25,11 @@ export class ChoiceSection extends Section {
       ${optionsHTML}
     </div>
     <a href="#" class="s-choice-button disabled">
-      <svg height="48" viewBox="0 0 144 48" width="144" xmlns="http://www.w3.org/2000/svg">
+      <svg class="s-choice-button-image" height="48" viewBox="0 0 144 48" width="144" xmlns="http://www.w3.org/2000/svg">
         <path d="m1 1h119l23 23-23 23h-119z" fill="#e0e0e0"/>
         <path d="m1 1h119l23 23-23 23h-119z" fill="none" stroke="#212121" stroke-linejoin="round"/>
-        <text transform="translate(66 24)">
-          <tspan font-family="Georgia" font-size="18" kerning="1" x="-20.905" y="6">Next</tspan>
-        </text>
       </svg>
+      <div class="s-choice-button-text">Next</div>
     </a>`
   }
 
