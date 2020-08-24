@@ -38,7 +38,7 @@
       const captionText = 'Selected: Option ' + (index + 1)
       propsList[0].frames[0].captions[0].html = captionText
 
-      const sections = [ new Section(propsList[0]), new RestartSection() ]
+      const sections = [new Section(propsList[0]), new RestartSection()]
 
       for (const section of sections) {
         await app.loadSection(section)
