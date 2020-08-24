@@ -7,6 +7,7 @@
   border-radius: 2px;
   box-sizing: border-box;
   color: #212121;
+  font-family: Georgia, serif;
   display: inline-block;
   font-size: 18px;
   line-height: 24px;
@@ -72,6 +73,7 @@
 
 .s-choice-button-text {
   color: #212121;
+  font-family: Georgia, serif;
   font-size: 18px;
   left: 45px;
   letter-spacing: 1px;

@@ -7,7 +7,6 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-touch-callout: none;
   background-color: #fafafa;
-  font-family: Georgia, serif;
   margin: 0;
   overflow: hidden;
   -webkit-user-select: none;
@@ -64,6 +63,8 @@ body {
   background-color: #fafafa;
   border: 1px solid #212121;
   box-sizing: border-box;
+  color: #212121;
+  font-family: Georgia, serif;
   font-size: 18px;
   line-height: 24px;
   overflow: hidden;
