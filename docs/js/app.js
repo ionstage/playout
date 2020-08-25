@@ -101,8 +101,8 @@ class Frame {
   constructor (props) {
     this.name = props.name
     this.fullName = props.parentName + '.' + props.name
-    this.captions = (props.captions || []).map(props => new FrameCaption({ ...props, parentName: this.fullName }))
-    this.images = (props.images || []).map(props => new FrameImage({ ...props, parentName: this.fullName }))
+    this.captions = (props.captions || []).map(props => new FrameCaption(Object.assign({ parentName: this.fullName }, props)))
+    this.images = (props.images || []).map(props => new FrameImage(Object.assign({ parentName: this.fullName }, props)))
     this.element = this.createElement(props)
     this.cropElement = this.createContentElement('frame-crop', this.element)
     this.cropContentElement = this.createContentElement('frame-content', this.cropElement)
@@ -179,7 +179,7 @@ export class Section {
   constructor (props) {
     this.name = props.name
     this.height = props.height
-    this.frames = (props.frames || []).map(props => new Frame({ ...props, parentName: this.name }))
+    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: this.name }, props)))
     this.element = this.createElement(props)
   }
 
