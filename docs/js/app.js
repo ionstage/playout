@@ -244,7 +244,7 @@ export class App {
   }
 
   async editable () {
-    const { Editable } = await import('./editable.js')
+    const { Editable } = await new Function("return import('./editable.js')")() // eslint-disable-line no-new-func
     new Editable({ app: this }).enable()
   }
 }
