@@ -38,7 +38,7 @@
         new Section(propsList[0]),
         new ChoiceSection({
           options: ['1. Option 1', '2. Option 2', '3. Option 3'],
-          oninput: value => { console.log(value) },
+          onchange: value => { console.log(value) },
           onnext: value => { location.href = 'pages/p0.html#' + value }
         })
       ]

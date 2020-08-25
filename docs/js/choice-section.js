@@ -6,11 +6,11 @@ export class ChoiceSection extends Section {
     super({ name: 's-choice', height })
     this.element.classList.add('hide')
     this.element.innerHTML = this.createInnerHTML(props)
-    this.element.addEventListener('input', this.oninput.bind(this))
+    this.element.addEventListener('change', this.onchange.bind(this))
     this.button = this.element.querySelector('.s-choice-button')
     this.button.addEventListener('click', this.onnext.bind(this))
     this.selectedValue = -1
-    this.oninput = props.oninput
+    this.onchange = props.onchange
     this.onnext = props.onnext
   }
 
@@ -38,11 +38,11 @@ export class ChoiceSection extends Section {
     this.element.classList.remove('hide')
   }
 
-  oninput (event) {
+  onchange (event) {
     this.button.classList.remove('disabled')
     this.selectedValue = parseInt(event.target.value, 10)
-    if (this.oninput) {
-      this.oninput(this.selectedValue)
+    if (this.onchange) {
+      this.onchange(this.selectedValue)
     }
   }
 
