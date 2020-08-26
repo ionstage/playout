@@ -28,11 +28,11 @@
 
     const main = async () => {
       const app = new App()
+      app.init()
+
       const propsList = await Promise.all([
-        app.init(),
         app.loadJSON('sections/s0.json')
       ])
-      propsList.shift()
 
       const sections = [
         new Section(propsList[0]),
