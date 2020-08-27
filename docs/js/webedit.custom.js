@@ -624,7 +624,7 @@ export class WebEdit {
     return [
       `._webedit_target {
         box-shadow: 0 0 0 2px #18FFFF;
-        cursot: default;
+        cursor: default;
         pointer-events: auto;
       }`,
       `._webedit_target > * {
