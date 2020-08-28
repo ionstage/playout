@@ -263,18 +263,19 @@ class Controls extends Component {
     const stageObject = name ? this.objects[name] : null
     this.editableObject.unregister()
     this.editableObject.register(stageObject)
-    this.selectElement.blur()
   }
 
   updateSelect () {
     this.editableObject.unregister()
     this.selectElement.innerHTML = '<option></option>'
     this.objectNames.forEach(name => this.selectElement.appendChild(this.createOptionElement(name)))
+    this.selectElement.blur()
   }
 
   updateSection () {
     this.sectionSelectElement.innerHTML = '<option></option>'
     this.app.sections.forEach((section) => this.sectionSelectElement.appendChild(this.createOptionElement(section.name)))
+    this.sectionSelectElement.blur()
   }
 
   copy () {
