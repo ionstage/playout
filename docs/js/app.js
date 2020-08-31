@@ -231,7 +231,7 @@ export class App {
     return fetch(src).then(res => res.json())
   }
 
-  async loadSection (section) {
+  async appendSection (section) {
     document.body.appendChild(section.element)
     await section.load()
     this.sections.push(section)

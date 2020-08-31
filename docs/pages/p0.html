@@ -35,10 +35,10 @@
       const index = parseInt(location.hash.substring(1), 10)
       const captionText = 'Selected: Option ' + (index + 1)
       props.frames[0].captions[0].html = captionText
-      await app.loadSection(new Section(props))
+      await app.appendSection(new Section(props))
 
       // load s-restart
-      await app.loadSection(new RestartSection())
+      await app.appendSection(new RestartSection())
 
       if (location.hostname === 'localhost') {
         app.editable()

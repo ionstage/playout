@@ -32,10 +32,10 @@
 
       // load s0
       const props = await app.loadJSON('sections/s0.json')
-      await app.loadSection(new Section(props))
+      await app.appendSection(new Section(props))
 
       // load s-choice
-      await app.loadSection(new ChoiceSection({
+      await app.appendSection(new ChoiceSection({
         options: ['1. Option 1', '2. Option 2', '3. Option 3'],
         onchange: value => { console.log(value) },
         onnext: value => { location.href = 'pages/p0.html#' + value }
