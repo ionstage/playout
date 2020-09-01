@@ -1,8 +1,8 @@
 class FrameCaption {
   constructor (props) {
     this.name = props.name
-    this.crop = (typeof props.crop !== 'undefined' ? props.crop : true)
     this.fullName = props.parentName + '.' + props.name
+    this.crop = (typeof props.crop !== 'undefined' ? props.crop : true)
     this.element = this.createElement(props)
     this.contentElement = this.createContentElement(props, this.element)
   }
