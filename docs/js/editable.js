@@ -190,13 +190,6 @@ class Controls extends Component {
     this.saveButton = this.element.querySelector('._editable_save_button')
     this.saveLink = this.element.querySelector('._editable_save_link')
     this.editableObject = new EditableObject({ onregister: this.onregister.bind(this), onunregister: this.onunregister.bind(this) })
-
-    this.frameCheckElement.checked = (sessionStorage.getItem('_editable_frame') === 'true')
-    this.updateFrame()
-    this.gridCheckElement.checked = (sessionStorage.getItem('_editable_grid') === 'true')
-    this.updateGrid()
-    this.snapToGridCheckElement.checked = (sessionStorage.getItem('_editable_snapToGrid') === 'true')
-    this.updateSnapToGrid()
   }
 
   get objects () {
@@ -220,7 +213,9 @@ class Controls extends Component {
 
   enable () {
     document.body.appendChild(this.element)
-    this.updateFrame()
+    this.frameCheckElement.checked = (sessionStorage.getItem('_editable_frame') === 'true')
+    this.gridCheckElement.checked = (sessionStorage.getItem('_editable_grid') === 'true')
+    this.snapToGridCheckElement.checked = (sessionStorage.getItem('_editable_snapToGrid') === 'true')
     this.frameCheckElement.addEventListener('change', () => this.updateFrame())
     this.gridCheckElement.addEventListener('change', () => this.updateGrid())
     this.snapToGridCheckElement.addEventListener('change', () => this.updateSnapToGrid())
@@ -233,6 +228,9 @@ class Controls extends Component {
     this.propY.enable()
     this.propW.enable()
     this.propH.enable()
+    this.updateFrame()
+    this.updateGrid()
+    this.updateSnapToGrid()
   }
 
   updateFrame () {
