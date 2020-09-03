@@ -4,14 +4,14 @@ export class ChoiceSection extends Section {
   constructor (props) {
     const height = props.options.length * 72 + 384
     super({ name: 's-choice', height })
-    this.element.classList.add('hide')
     this.element.innerHTML = this.createInnerHTML(props)
-    this.element.addEventListener('change', this.change.bind(this))
     this.buttonElement = this.element.querySelector('.s-choice-button')
-    this.buttonElement.addEventListener('click', this.next.bind(this))
     this.selectedValue = -1
     this.onchange = props.onchange
     this.onnext = props.onnext
+    this.element.classList.add('hide')
+    this.element.addEventListener('change', this.change.bind(this))
+    this.buttonElement.addEventListener('click', this.next.bind(this))
   }
 
   createInnerHTML (props) {
