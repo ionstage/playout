@@ -179,13 +179,14 @@ export class Section {
   constructor (props) {
     this.name = props.name
     this.height = props.height
+    this.className = (typeof props.className !== 'undefined' ? props.className : '')
     this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: this.name }, props)))
     this.element = this.createElement(props)
   }
 
   createElement (props) {
     const el = document.createElement('div')
-    el.className = 'section ' + this.name + ' ' + props.className
+    el.className = 'section ' + this.name + ' ' + this.className
     el.style.height = props.height + 'px'
     return el
   }
