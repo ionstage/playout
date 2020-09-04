@@ -1,8 +1,8 @@
 import { Section } from './app.js'
 
 export class RestartSection extends Section {
-  constructor () {
-    super({ name: 's-restart', height: 264 })
+  constructor (props) {
+    super(Object.assign({ name: 's-restart', height: 264 }, props))
     this.element.classList.add('hide')
     this.element.innerHTML = this.createInnerHTML()
   }

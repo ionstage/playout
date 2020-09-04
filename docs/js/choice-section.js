@@ -3,7 +3,7 @@ import { Section } from './app.js'
 export class ChoiceSection extends Section {
   constructor (props) {
     const height = props.options.length * 72 + 384
-    super({ name: 's-choice', height })
+    super(Object.assign({ name: 's-choice', height }, props))
     this.element.innerHTML = this.createInnerHTML(props)
     this.buttonElement = this.element.querySelector('.s-choice-button')
     this.selectedValue = -1
