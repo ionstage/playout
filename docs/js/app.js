@@ -185,7 +185,7 @@ export class Section {
 
   createElement (props) {
     const el = document.createElement('div')
-    el.className = 'section ' + this.name
+    el.className = 'section ' + this.name + ' ' + props.className
     el.style.height = props.height + 'px'
     return el
   }
