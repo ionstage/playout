@@ -4,7 +4,7 @@ export class ChoiceSection extends Section {
   constructor (props) {
     const height = props.options.length * 72 + 384
     super(Object.assign({ name: 's-choice', height }, props))
-    this.element.innerHTML = this.createInnerHTML(props)
+    this.element.innerHTML = this.createInnerHTML(props.options)
     this.buttonElement = this.element.querySelector('.s-choice-button')
     this.selectedValue = -1
     this.onchange = props.onchange
@@ -14,8 +14,8 @@ export class ChoiceSection extends Section {
     this.buttonElement.addEventListener('click', this.next.bind(this))
   }
 
-  createInnerHTML (props) {
-    const optionsHTML = props.options.map((option, index) => {
+  createInnerHTML (options) {
+    const optionsHTML = options.map((option, index) => {
       return `<div><label><input type="radio" name="s-choice" class="s-choice-input" value="${index}">
         <div class="s-choice-option">${option}</div>
       </label></div>`
