@@ -1,24 +1,25 @@
 class FrameCaption {
   constructor (props) {
     this.name = props.name
-    this.fullName = props.parentName + '.' + props.name
     this.crop = (typeof props.crop !== 'undefined' ? props.crop : true)
-    this.element = this.createElement(props)
-    this.contentElement = this.createContentElement(props, this.element)
+    this.element = this.createElement(props.name)
+
+    const objectName = props.parentName + '.' + props.name
+    this.contentElement = this.createContentElement(props.x, props.y, props.html, objectName, this.element)
   }
 
-  createElement (props) {
+  createElement (name) {
     const el = document.createElement('div')
-    el.className = 'caption ' + props.name
+    el.className = 'caption ' + name
     return el
   }
 
-  createContentElement (props, parent) {
+  createContentElement (x, y, html, objectName, parent) {
     const el = document.createElement('div')
     el.className = 'caption-content'
-    el.innerHTML = props.html
-    el.dataset.objectName = this.fullName
-    el.style.transform = 'translate3d(' + props.x + 'px, ' + props.y + 'px, 0)'
+    el.innerHTML = html
+    el.dataset.objectName = objectName
+    el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
     parent.appendChild(el)
     return el
   }
@@ -44,28 +45,29 @@ class FrameImage {
   constructor (props) {
     this.name = props.name
     this.src = props.src
-    this.fullName = props.parentName + '.' + props.name
     this.crop = (typeof props.crop !== 'undefined' ? props.crop : true)
-    this.element = this.createElement(props)
-    this.contentElement = this.createContentElement(props, this.element)
+    this.element = this.createElement(props.name)
+
+    const objectName = props.parentName + '.' + props.name
+    this.contentElement = this.createContentElement(props.x, props.y, props.width, props.height, objectName, this.element)
   }
 
-  createElement (props) {
+  createElement (name) {
     const el = document.createElement('div')
-    el.className = 'image ' + props.name
+    el.className = 'image ' + name
     return el
   }
 
-  createContentElement (props, parent) {
+  createContentElement (x, y, width, height, objectName, parent) {
     const el = new Image()
     el.className = 'image-content'
-    el.dataset.objectName = this.fullName
-    el.style.transform = 'translate3d(' + props.x + 'px, ' + props.y + 'px, 0)'
-    if ('width' in props) {
-      el.style.width = props.width + 'px'
+    el.dataset.objectName = objectName
+    el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
+    if (typeof width !== 'undefined') {
+      el.style.width = width + 'px'
     }
-    if ('height' in props) {
-      el.style.height = props.height + 'px'
+    if (typeof height !== 'undefined') {
+      el.style.height = height + 'px'
     }
     parent.appendChild(el)
     return el
@@ -100,25 +102,28 @@ class FrameImage {
 class Frame {
   constructor (props) {
     this.name = props.name
-    this.fullName = props.parentName + '.' + props.name
-    this.captions = (props.captions || []).map(props => new FrameCaption(Object.assign({ parentName: this.fullName }, props)))
-    this.images = (props.images || []).map(props => new FrameImage(Object.assign({ parentName: this.fullName }, props)))
-    this.element = this.createElement(props)
+
+    const objectName = props.parentName + '.' + props.name
+
+    this.captions = (props.captions || []).map(props => new FrameCaption(Object.assign({ parentName: objectName }, props)))
+    this.images = (props.images || []).map(props => new FrameImage(Object.assign({ parentName: objectName }, props)))
+
+    this.element = this.createElement(props.name, props.x, props.y, props.width, props.height, objectName)
     this.cropElement = this.createContentElement('frame-crop', this.element)
     this.cropContentElement = this.createContentElement('frame-content', this.cropElement)
     this.contentElement = this.createContentElement('frame-content', this.element)
   }
 
-  createElement (props) {
+  createElement (name, x, y, width, height, objectName) {
     const el = document.createElement('div')
-    el.className = 'frame ' + props.name + ' hide'
-    el.dataset.objectName = this.fullName
-    el.style.transform = 'translate3d(' + props.x + 'px, ' + props.y + 'px, 0)'
-    if ('width' in props) {
-      el.style.width = props.width + 'px'
+    el.className = 'frame ' + name + ' hide'
+    el.dataset.objectName = objectName
+    el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
+    if (typeof width !== 'undefined') {
+      el.style.width = width + 'px'
     }
-    if ('height' in props) {
-      el.style.height = props.height + 'px'
+    if (typeof height !== 'undefined') {
+      el.style.height = height + 'px'
     }
     return el
   }
@@ -179,15 +184,15 @@ export class Section {
   constructor (props) {
     this.name = props.name
     this.height = props.height
-    this.className = (typeof props.className !== 'undefined' ? props.className : '')
-    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: this.name }, props)))
-    this.element = this.createElement(props)
+    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: props.name }, props)))
+    const className = (typeof props.className !== 'undefined' ? props.className : '')
+    this.element = this.createElement(props.name, className, props.height)
   }
 
-  createElement () {
+  createElement (name, className, height) {
     const el = document.createElement('div')
-    el.className = 'section ' + this.name + ' ' + this.className
-    el.style.height = this.height + 'px'
+    el.className = 'section ' + name + ' ' + className
+    el.style.height = height + 'px'
     return el
   }
 
