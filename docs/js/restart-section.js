@@ -1,4 +1,4 @@
-import { Section } from './app.js'
+import { Section } from './section.js'
 
 export class RestartSection extends Section {
   constructor (props) {
