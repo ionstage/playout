@@ -203,7 +203,7 @@ export class Section {
     }
   }
 
-  async fadeOut () {
+  async unload () {
     return new Promise(resolve => {
       this.element.addEventListener('transitionend', () => resolve())
       this.element.classList.add('hide')

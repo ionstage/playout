@@ -24,7 +24,7 @@ export class App {
 
   async removeSection (section) {
     this.sections.splice(this.sections.indexOf(section), 1)
-    await section.fadeOut()
+    await section.unload()
     document.body.removeChild(section.element)
   }
 
