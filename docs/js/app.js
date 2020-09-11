@@ -1,3 +1,37 @@
+export class Section {
+  constructor (props) {
+    this.name = props.name
+    this.height = props.height
+
+    const className = (typeof props.className !== 'undefined' ? props.className : '')
+    this.element = this.createElement(props.name, className, props.height)
+  }
+
+  createElement (name, className, height) {
+    const el = document.createElement('div')
+    el.className = 'section ' + name + ' ' + className
+    el.style.height = height + 'px'
+    return el
+  }
+
+  /* template */
+  async load () {}
+
+  async unload () {
+    return new Promise(resolve => {
+      this.element.addEventListener('transitionend', () => resolve())
+      this.element.classList.add('hide')
+    })
+  }
+
+  toJSON () {
+    return {
+      name: this.name,
+      height: this.height
+    }
+  }
+}
+
 export class App {
   constructor () {
     this.sections = []

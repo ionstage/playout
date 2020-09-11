@@ -24,7 +24,7 @@
 <body>
   <script type="module">
     import { App } from './js/app.js'
-    import { Section } from './js/sections/section.js'
+    import { FrameSection } from './js/sections/frame-section.js'
     import { ChoiceSection } from './js/sections/choice-section.js'
 
     const main = async () => {
@@ -33,7 +33,7 @@
 
       // load s0
       const props = await app.loadJSON('sections/s0.json')
-      await app.appendSection(new Section(props))
+      await app.appendSection(new FrameSection(props))
 
       // load s-choice
       await app.appendSection(new ChoiceSection({

@@ -24,7 +24,7 @@
 <body>
   <script type="module">
     import { App } from './js/app.js'
-    import { Section } from './js/sections/section.js'
+    import { FrameSection } from './js/sections/frame-section.js'
     import { RestartSection } from './js/sections/restart-section.js'
 
     const main = async () => {
@@ -36,7 +36,7 @@
       const index = parseInt(location.hash.substring(1), 10)
       const captionText = 'Selected: Option ' + (index + 1)
       props.frames[0].captions[0].html = captionText
-      await app.appendSection(new Section(props))
+      await app.appendSection(new FrameSection(props))
 
       // load s-restart
       await app.appendSection(new RestartSection())

@@ -1,4 +1,4 @@
-import { Section } from './section.js'
+import { Section } from '../app.js'
 
 export class ChoiceSection extends Section {
   constructor (props) {

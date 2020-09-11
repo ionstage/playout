@@ -1,3 +1,5 @@
+import { Section } from '../app.js'
+
 class FrameCaption {
   constructor (props) {
     this.name = props.name
@@ -180,20 +182,10 @@ class Frame {
   }
 }
 
-export class Section {
+export class FrameSection extends Section {
   constructor (props) {
-    this.name = props.name
-    this.height = props.height
-    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: props.name }, props)))
-    const className = (typeof props.className !== 'undefined' ? props.className : '')
-    this.element = this.createElement(props.name, className, props.height)
-  }
-
-  createElement (name, className, height) {
-    const el = document.createElement('div')
-    el.className = 'section ' + name + ' ' + className
-    el.style.height = height + 'px'
-    return el
+    super(props)
+    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: this.name }, props)))
   }
 
   async load () {
@@ -203,18 +195,7 @@ export class Section {
     }
   }
 
-  async unload () {
-    return new Promise(resolve => {
-      this.element.addEventListener('transitionend', () => resolve())
-      this.element.classList.add('hide')
-    })
-  }
-
   toJSON () {
-    return {
-      name: this.name,
-      height: this.height,
-      frames: this.frames
-    }
+    return Object.assign(super.toJSON(), { frames: this.frames })
   }
 }
