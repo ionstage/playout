@@ -1,7 +1,7 @@
 export class Section {
   constructor (props) {
-    this.name = props.name
-    this.height = props.height
+    this.name = props.name || ''
+    this.height = props.height || 0
     this.element = this.render()
   }
 
