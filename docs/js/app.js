@@ -2,15 +2,14 @@ export class Section {
   constructor (props) {
     this.name = props.name
     this.height = props.height
-
-    const className = (typeof props.className !== 'undefined' ? props.className : '')
-    this.element = this.createElement(props.name, className, props.height)
+    this.className = (typeof props.className !== 'undefined' ? props.className : '')
+    this.element = this.render()
   }
 
-  createElement (name, className, height) {
+  render () {
     const el = document.createElement('div')
-    el.className = 'section ' + name + ' ' + className
-    el.style.height = height + 'px'
+    el.className = 'section ' + this.name + ' ' + this.className
+    el.style.height = this.height + 'px'
     return el
   }
 
