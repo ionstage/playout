@@ -2,13 +2,15 @@ import { Section } from '../app.js'
 
 export class RestartSection extends Section {
   constructor (props) {
-    super(Object.assign({ name: 's-restart', height: 264 }, props))
-    this.element.classList.add('hide')
-    this.element.innerHTML = this.createInnerHTML()
+    super(Object.assign({ height: 264 }, props))
   }
 
-  createInnerHTML () {
-    return '<a href="index.html" class="s-restart-button">Restart</a>'
+  render () {
+    const el = super.render()
+    el.classList.add('s-restart')
+    el.classList.add('hide')
+    el.innerHTML = '<a href="index.html" class="s-restart-button">Restart</a>'
+    return el
   }
 
   async load () {
