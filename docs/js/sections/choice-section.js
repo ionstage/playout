@@ -3,13 +3,14 @@ import { Section } from '../app.js'
 export class ChoiceSection extends Section {
   constructor (props) {
     const height = props.options.length * 72 + 384
-    super(Object.assign({ name: 's-choice', height }, props))
+    super(Object.assign({ height }, props))
+    this.element.classList.add('s-choice')
+    this.element.classList.add('hide')
     this.element.innerHTML = this.createInnerHTML(props.options)
     this.buttonElement = this.element.querySelector('.s-choice-button')
     this.selectedValue = -1
     this.onchange = props.onchange
     this.onnext = props.onnext
-    this.element.classList.add('hide')
     this.element.addEventListener('change', this.change.bind(this))
     this.buttonElement.addEventListener('click', this.next.bind(this))
   }
