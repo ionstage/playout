@@ -1,6 +1,6 @@
 import { Section } from '../app.js'
 
-class FrameCaption {
+class CaptionObject {
   constructor (props) {
     this.name = props.name
     this.crop = (typeof props.crop !== 'undefined' ? props.crop : true)
@@ -43,7 +43,7 @@ class FrameCaption {
   }
 }
 
-class FrameImage {
+class ImageObject {
   constructor (props) {
     this.name = props.name
     this.src = props.src
@@ -101,14 +101,14 @@ class FrameImage {
   }
 }
 
-class Frame {
+class FrameObject {
   constructor (props) {
     this.name = props.name
 
     const objectName = props.parentName + '.' + props.name
 
-    this.captions = (props.captions || []).map(props => new FrameCaption(Object.assign({ parentName: objectName }, props)))
-    this.images = (props.images || []).map(props => new FrameImage(Object.assign({ parentName: objectName }, props)))
+    this.captions = (props.captions || []).map(props => new CaptionObject(Object.assign({ parentName: objectName }, props)))
+    this.images = (props.images || []).map(props => new ImageObject(Object.assign({ parentName: objectName }, props)))
 
     this.element = this.createElement(props.name, props.x, props.y, props.width, props.height, objectName)
     this.cropElement = this.createContentElement('frame-crop', this.element)
@@ -185,7 +185,7 @@ class Frame {
 export class FrameSection extends Section {
   constructor (props) {
     super(props)
-    this.frames = (props.frames || []).map(props => new Frame(Object.assign({ parentName: this.name }, props)))
+    this.frames = (props.frames || []).map(props => new FrameObject(Object.assign({ parentName: this.name }, props)))
   }
 
   async load () {
