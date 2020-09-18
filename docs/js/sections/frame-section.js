@@ -185,7 +185,7 @@ class FrameObject {
 export class FrameSection extends Section {
   constructor (props) {
     super(props)
-    this.frames = (props.frames || []).map(props => new FrameObject(Object.assign({ parentName: this.name }, props)))
+    this.frames = (props.frames || []).map(frame => new FrameObject(Object.assign({ parentName: this.name }, frame)))
   }
 
   async load () {
