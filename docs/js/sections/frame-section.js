@@ -12,13 +12,13 @@ class CaptionObject {
 
   createElement (name) {
     const el = document.createElement('div')
-    el.className = 'caption ' + name
+    el.className = 's-frame-caption ' + name
     return el
   }
 
   createContentElement (x, y, html, objectName, parent) {
     const el = document.createElement('div')
-    el.className = 'caption-content'
+    el.className = 's-frame-caption-content'
     el.innerHTML = html
     el.dataset.objectName = objectName
     el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
@@ -56,13 +56,13 @@ class ImageObject {
 
   createElement (name) {
     const el = document.createElement('div')
-    el.className = 'image ' + name
+    el.className = 's-frame-image ' + name
     return el
   }
 
   createContentElement (x, y, width, height, objectName, parent) {
     const el = new Image()
-    el.className = 'image-content'
+    el.className = 's-frame-image-content'
     el.dataset.objectName = objectName
     el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
     if (typeof width !== 'undefined') {
@@ -111,14 +111,14 @@ class FrameObject {
     this.images = (props.images || []).map(props => new ImageObject(Object.assign({ parentName: objectName }, props)))
 
     this.element = this.createElement(props.name, props.x, props.y, props.width, props.height, objectName)
-    this.cropElement = this.createContentElement('frame-crop', this.element)
-    this.cropContentElement = this.createContentElement('frame-content', this.cropElement)
-    this.contentElement = this.createContentElement('frame-content', this.element)
+    this.cropElement = this.createContentElement('s-frame-frame-crop', this.element)
+    this.cropContentElement = this.createContentElement('s-frame-frame-content', this.cropElement)
+    this.contentElement = this.createContentElement('s-frame-frame-content', this.element)
   }
 
   createElement (name, x, y, width, height, objectName) {
     const el = document.createElement('div')
-    el.className = 'frame ' + name + ' hide'
+    el.className = 's-frame-frame ' + name + ' hide'
     el.dataset.objectName = objectName
     el.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)'
     if (typeof width !== 'undefined') {
