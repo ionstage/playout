@@ -1,0 +1,6 @@
+{
+  "name": "playout",
+  "version": "1.0.0",
+  "description": "Framework for playing content",
+  "private": true
+}
