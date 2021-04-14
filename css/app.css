@@ -1,7 +1,12 @@
+html {
+  overflow: hidden;
+}
+
 body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   margin: 0;
+  overflow: hidden;
   -webkit-user-select: none;
   user-select: none;
 }
