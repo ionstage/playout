@@ -6,6 +6,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   -webkit-touch-callout: none;
+  background-color: #fafafa;
   margin: 0;
   overflow: hidden;
   -webkit-user-select: none;
