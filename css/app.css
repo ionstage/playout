@@ -14,5 +14,6 @@ body {
 }
 
 .page {
+  margin: auto;
   width: 624px;
 }
