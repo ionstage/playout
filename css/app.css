@@ -10,12 +10,12 @@ body {
   cursor: default;
   margin: 0;
   overflow: hidden;
+  padding: 0 50vw;
   -webkit-user-select: none;
   user-select: none;
 }
 
 .page {
-  padding: 0 50vw;
   position: relative
 }
 
