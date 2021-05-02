@@ -10,13 +10,14 @@ body {
   cursor: default;
   margin: 0;
   overflow: hidden;
-  padding: 0 50vw;
   -webkit-user-select: none;
   user-select: none;
 }
 
 .section {
+  margin: auto;
   position: relative;
+  width: 624px;
 }
 
 .component {
