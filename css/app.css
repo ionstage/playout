@@ -15,9 +15,9 @@ body {
 }
 
 .section {
-  margin: auto;
+  box-sizing: border-box;
+  padding: 50vh 50vw;
   position: relative;
-  width: 624px;
 }
 
 .component {
