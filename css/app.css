@@ -15,8 +15,9 @@ body {
 }
 
 .section {
-  box-sizing: border-box;
-  padding: 50vh 50vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
   position: relative;
 }
 
