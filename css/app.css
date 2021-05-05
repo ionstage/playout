@@ -22,5 +22,8 @@ body {
 }
 
 .component {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   position: absolute;
 }
