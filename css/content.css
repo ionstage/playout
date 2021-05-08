@@ -1,0 +1,27 @@
+.section {
+  margin: 24px 0;
+}
+
+.component[data-type='caption'] {
+  background-color: #fafafa;
+  border: 2px solid #212121;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: 'Noto Serif', serif;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 8px 16px;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.component[data-type='frame'] {
+  border: 3px solid #212121;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.component[data-type='image'] > img {
+  height: 100%;
+  width: 100%;
+}
