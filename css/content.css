@@ -2,7 +2,7 @@
   margin: 24px 0;
 }
 
-.component[data-type='caption'] {
+.component[data-type='caption'] > div {
   background-color: #fafafa;
   border: 2px solid #212121;
   border-radius: 3px;
