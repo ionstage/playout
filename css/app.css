@@ -26,9 +26,6 @@ img {
 }
 
 .component {
-  align-items: center;
-  display: flex;
-  justify-content: center;
   position: absolute;
   transform: translate(-50%, -50%);
 }
