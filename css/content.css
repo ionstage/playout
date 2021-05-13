@@ -52,6 +52,7 @@ body {
   cursor: pointer;
   margin: 18px;
   padding: 12px 24px;
+  pointer-events: auto;
   position: relative;
   transition: background-color .1s ease-in-out;
 }

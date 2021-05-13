@@ -7,15 +7,10 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-touch-callout: none;
   background-color: #fafafa;
-  cursor: default;
   margin: 0;
   overflow: hidden;
   -webkit-user-select: none;
   user-select: none;
-}
-
-img {
-  pointer-events: none;
 }
 
 .section {
@@ -24,6 +19,7 @@ img {
 
 .component {
   left: 50%;
+  pointer-events: none;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
