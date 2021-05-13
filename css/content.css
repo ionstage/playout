@@ -42,6 +42,10 @@ body {
   color: #fafafa;
 }
 
+.choice-input {
+  display: none;
+}
+
 .choice-option {
   background-color: #fafafa;
   border-radius: 12px;
@@ -52,12 +56,11 @@ body {
   transition: background-color .1s ease-in-out;
 }
 
-.choice-option.selected {
-  background-color: #ffa726;
+.choice-input:checked+.choice-option {
+  background-color: orange;
   pointer-events: none;
 }
 
-.choice-option:not(.selected).hover:hover,
-.choice-option:not(.selected).active {
+.choice-input:not(:checked)+.choice-option:hover {
   color: #9e9e9e;
 }
