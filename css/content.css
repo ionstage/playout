@@ -73,6 +73,10 @@ body {
   text-decoration: none;
 }
 
+.button:hover {
+  opacity: .6;
+}
+
 .button > svg {
   vertical-align: middle;
 }
