@@ -77,6 +77,11 @@ body {
   opacity: .6;
 }
 
+.button[href='#'] {
+  opacity: .1;
+  pointer-events: none;
+}
+
 .button > svg {
   vertical-align: middle;
 }
