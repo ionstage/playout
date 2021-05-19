@@ -82,6 +82,15 @@ body {
   pointer-events: none;
 }
 
+.button.restart {
+  background-color: #e0e0e0;
+  border: 2px solid #212121;
+  border-radius: 24px;
+  color: #212121;
+  line-height: 48px;
+  width: 168px;
+}
+
 .button > svg {
   vertical-align: middle;
 }
