@@ -2,10 +2,15 @@
   "name": "playout",
   "version": "1.0.0",
   "description": "Framework for playing content",
+  "scripts": {
+    "bundle": "browserify -r webfontloader -o js/bundle.js"
+  },
+  "dependencies": {
+    "webfontloader": "^1.6.28"
+  },
   "devDependencies": {
     "browserify": "^17.0.0",
-    "eslint": "^7.24.0",
-    "webfontloader": "^1.6.28"
+    "eslint": "^7.24.0"
   },
   "private": true
 }

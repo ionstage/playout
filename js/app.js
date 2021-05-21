@@ -1,5 +1,7 @@
 (function() {
-  window.WebFont.load({
+  var WebFont = require('webfontloader');
+
+  WebFont.load({
     google: {
       families: ['Noto Serif'],
     },
