@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Framework for playing content",
   "scripts": {
-    "bundle": "browserify -r webfontloader -o js/bundle.js"
+    "bundle": "browserify -r es6-promise -r webfontloader -o js/bundle.js"
   },
   "dependencies": {
+    "es6-promise": "^4.2.8",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {

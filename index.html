@@ -54,6 +54,11 @@
     </div>
   </div>
   <script src="js/bundle.js"></script>
+  <script>
+    if (typeof Promise === 'undefined') {
+      require('es6-promise').polyfill();
+    }
+  </script>
   <script src="js/app.js"></script>
 </body>
 </html>
