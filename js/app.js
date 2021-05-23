@@ -3,10 +3,17 @@
 
   var WebFont = require('webfontloader');
 
-  WebFont.load({
-    google: {
-      families: ['Noto Serif'],
-    },
-    active: function() { /* TODO */ },
-  });
+  var app = {};
+
+  app.loadFont = function(name) {
+    return new Promise(function(resolve, reject) {
+      WebFont.load({
+        google: { families: [name] },
+        active: resolve,
+        inactive: reject,
+      });
+    });
+  };
+
+  window.app = app;
 })();
