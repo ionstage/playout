@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="section" style="height: 336px;">
-    <div class="component choice">
+    <div id="choice" class="component choice">
       <div class="choice-title">Choose from options</div>
       <label>
         <input type="radio" name="choice" class="choice-input" value="1">
@@ -44,7 +44,7 @@
   </div>
   <div class="section" style="height: 52px; margin: 48px auto 168px;">
     <div class="component" style="text-align: right; width: 576px;">
-      <a href="#" class="button">
+      <a id="button" href="#" class="button">
         <svg width="160" height="52" viewBox="0 0 160 52">
           <path d="m1 1h132l25 25-25 25h-132z" fill="#e0e0e0"/>
           <path d="m1 1h132l25 25-25 25h-132z" fill="none" stroke="#212121" stroke-width="2" stroke-linejoin="round"/>
@@ -63,6 +63,14 @@
   <script>
     (function() {
       app.loadFont('Noto Serif');
+
+      // change url for selected option
+      var choice = document.getElementById('choice');
+      var button = document.getElementById('button');
+      choice.addEventListener('change', function(event) {
+        var value = event.target.value;
+        button.href = 'pages/p0.html#' + value;
+      });
     })();
   </script>
 </body>

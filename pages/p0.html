@@ -13,7 +13,7 @@
       <img src="../images/image.svg">
     </div>
     <div class="component caption">
-      <div style="transform: translate(-144px, -52px);">Selected: Option <span></span></div>
+      <div style="transform: translate(-144px, -52px);">Selected: Option <span id="option"></span></div>
     </div>
   </div>
   <div class="section" style="height: 52px; margin: 48px auto 168px;">
@@ -31,6 +31,11 @@
   <script>
     (function() {
       app.loadFont('Noto Serif');
+
+      // change text for selected option
+      var option = document.getElementById('option');
+      var index = parseInt(location.hash.substring(1), 10);
+      option.textContent = isFinite(index) ? String(index) : '';
     })();
   </script>
 </body>
