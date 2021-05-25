@@ -54,6 +54,7 @@ body {
   margin: 18px;
   padding: 12px 24px;
   pointer-events: auto;
+  touch-action: manipulation;
   transition: background-color .1s ease-in-out;
 }
 
@@ -70,6 +71,7 @@ body {
   display: inline-block;
   pointer-events: auto;
   text-decoration: none;
+  touch-action: manipulation;
 }
 
 .button:hover {

@@ -37,5 +37,8 @@
     }));
   };
 
+  // enable hover on touch device
+  window.addEventListener('touchstart', function() {});
+
   window.app = app;
 })();
