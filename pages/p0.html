@@ -10,7 +10,7 @@
 <body>
   <div class="section" style="height: 360px;">
     <div class="component image" style="height: 360px; width: 576px;">
-      <img src="../images/image.svg">
+      <img data-src="../images/image.svg">
     </div>
     <div class="component caption">
       <div style="transform: translate(-144px, -52px);">Selected: Option <span id="option"></span></div>
@@ -30,12 +30,13 @@
   <script src="../js/app.js"></script>
   <script>
     (function() {
-      app.loadFont('Noto Serif');
-
       // change text for selected option
       var option = document.getElementById('option');
       var index = parseInt(location.hash.substring(1), 10);
       option.textContent = isFinite(index) ? String(index) : '';
+
+      app.loadFont('Noto Serif');
+      app.loadSections();
     })();
   </script>
 </body>

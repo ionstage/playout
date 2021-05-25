@@ -15,5 +15,27 @@
     });
   };
 
+  app.loadImage = function(image) {
+    return new Promise(function(resolve, reject) {
+      image.onload = function() { resolve(); };
+      image.onerror = reject;
+      image.src = image.dataset.src;
+    });
+  };
+
+  app.loadSection = function(el) {
+    var images = Array.prototype.slice.call(el.querySelectorAll('img'));
+    return Promise.all(images.map(app.loadImage)).finally(function() {
+      el.classList.add('visible');
+    });
+  };
+
+  app.loadSections = function() {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.section'));
+    return Promise.all(sections.map(function(section) {
+      return app.loadSection(section);
+    }));
+  };
+
   window.app = app;
 })();

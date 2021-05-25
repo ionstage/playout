@@ -10,7 +10,7 @@
 <body>
   <div class="section" style="height: 360px;">
     <div class="component image" style="height: 360px; width: 576px;">
-      <img src="images/image.svg" style="border-radius: 3px;">
+      <img data-src="images/image.svg" style="border-radius: 3px;">
     </div>
     <div class="component frame" style="height: 360px; width: 576px;"></div>
     <div class="component caption">
@@ -62,8 +62,6 @@
   <script src="js/app.js"></script>
   <script>
     (function() {
-      app.loadFont('Noto Serif');
-
       // change url for selected option
       var choice = document.getElementById('choice');
       var button = document.getElementById('button');
@@ -71,6 +69,9 @@
         var value = event.target.value;
         button.href = 'pages/p0.html#' + value;
       });
+
+      app.loadFont('Noto Serif');
+      app.loadSections();
     })();
   </script>
 </body>
