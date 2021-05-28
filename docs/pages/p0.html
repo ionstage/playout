@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="../">
   <meta charset="utf-8">
-  <meta name="viewport">
-  <script type="module">
-    const ua = window.navigator.userAgent
-    if (ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1 ||
-        (ua.indexOf('Android') !== -1 && ua.indexOf('Mobile') !== -1)) {
-      const el = document.querySelector('meta[name=viewport]')
-      el.setAttribute('content', 'width=600')
-    }
-  </script>
+  <meta name="viewport" content="width=624">
   <title></title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/sections/frame-section.css">
-  <link rel="stylesheet" href="css/sections/restart-section.css">
-  <style>
-    .s1 .f0 {
-      border: none;
-    }
-  </style>
-  <meta name="generator" content="playout 1.0.0">
+  <link rel="stylesheet" href="../css/app.min.css">
 </head>
 <body>
-  <script type="module">
-    import { App } from './js/app.js'
-    import { FrameSection } from './js/sections/frame-section.js'
-    import { RestartSection } from './js/sections/restart-section.js'
-
-    const main = async () => {
-      const app = new App()
-      app.init()
-
-      // load s1
-      const props = await app.loadJSON('json/sections/s1.json')
-      const index = parseInt(location.hash.substring(1), 10)
-      const captionText = 'Selected: Option ' + (index + 1)
-      props.frames[0].captions[0].html = captionText
-      await app.appendSection(new FrameSection(props))
-
-      // load s-restart
-      await app.appendSection(new RestartSection())
-
-      if (location.hostname === 'localhost') {
-        app.editable()
-      }
+  <div class="section" style="height: 360px;">
+    <div class="component image" style="height: 360px; width: 576px;">
+      <img data-src="../images/image.svg">
+    </div>
+    <div class="component caption">
+      <div style="transform: translate(-144px, -52px);">Selected: Option <span id="option"></span></div>
+    </div>
+  </div>
+  <div class="section" style="height: 52px; margin: 48px auto 168px;">
+    <div class="component" style="text-align: center;">
+      <a href="../index.html" class="button restart">Restart</a>
+    </div>
+  </div>
+  <script src="../js/bundle.min.js"></script>
+  <script>
+    if (typeof Promise === 'undefined') {
+      require('es6-promise').polyfill();
     }
+  </script>
+  <script src="../js/app.min.js"></script>
+  <script>
+    (function() {
+      // change text for selected option
+      var option = document.getElementById('option');
+      var index = parseInt(location.hash.substring(1), 10);
+      option.textContent = isFinite(index) ? String(index) : '';
 
-    main()
+      app.loadFont('Noto Serif');
+      app.loadSections();
+    })();
   </script>
 </body>
 </html>

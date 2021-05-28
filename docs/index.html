@@ -2,53 +2,76 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport">
-  <script type="module">
-    const ua = window.navigator.userAgent
-    if (ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1 ||
-        (ua.indexOf('Android') !== -1 && ua.indexOf('Mobile') !== -1)) {
-      const el = document.querySelector('meta[name=viewport]')
-      el.setAttribute('content', 'width=600')
-    }
-  </script>
+  <meta name="viewport" content="width=624">
   <title></title>
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/sections/choice-section.css">
-  <link rel="stylesheet" href="css/sections/frame-section.css">
-  <style>
-    .s0 .f1 {
-      border: none;
-    }
-  </style>
-  <meta name="generator" content="playout 1.0.0">
+  <link rel="stylesheet" href="css/app.min.css">
 </head>
 <body>
-  <script type="module">
-    import { App } from './js/app.js'
-    import { FrameSection } from './js/sections/frame-section.js'
-    import { ChoiceSection } from './js/sections/choice-section.js'
-
-    const main = async () => {
-      const app = new App()
-      app.init()
-
-      // load s0
-      const props = await app.loadJSON('json/sections/s0.json')
-      await app.appendSection(new FrameSection(props))
-
-      // load s-choice
-      await app.appendSection(new ChoiceSection({
-        options: ['1. Option 1', '2. Option 2', '3. Option 3'],
-        onchange: value => { console.log(value) },
-        onnext: value => { location.href = 'pages/p0.html#' + value }
-      }))
-
-      if (location.hostname === 'localhost') {
-        app.editable()
-      }
+  <div class="section" style="height: 360px;">
+    <div class="component image" style="height: 360px; width: 576px;">
+      <img data-src="images/image.svg" style="border-radius: 3px;">
+    </div>
+    <div class="component frame" style="height: 360px; width: 576px;"></div>
+    <div class="component caption">
+      <div style="transform: translate(-168px, -72px);">Caption 1</div>
+    </div>
+    <div class="component caption">
+      <div style="transform: translate(144px, 96px);">Caption 2</div>
+    </div>
+  </div>
+  <div class="section" style="height: 360px;">
+    <div class="component caption">
+      <div style="transform: translate(-48px, -48px);">Caption 3</div>
+    </div>
+  </div>
+  <div class="section" style="height: 336px;">
+    <div id="choice" class="component choice">
+      <div class="choice-title">Choose from options</div>
+      <label>
+        <input type="radio" name="choice" class="choice-input" value="1">
+        <div class="choice-option">1. Option 1</div>
+      </label>
+      <label>
+        <input type="radio" name="choice" class="choice-input" value="2">
+        <div class="choice-option">2. Option 2</div>
+      </label>
+      <label>
+        <input type="radio" name="choice" class="choice-input" value="3">
+        <div class="choice-option">3. Option 3</div>
+      </label>
+    </div>
+  </div>
+  <div class="section" style="height: 52px; margin: 48px auto 168px;">
+    <div class="component" style="text-align: right; width: 576px;">
+      <a id="button" href="#" class="button">
+        <svg width="160" height="52" viewBox="0 0 160 52">
+          <path d="m1 1h132l25 25-25 25h-132z" fill="#e0e0e0"/>
+          <path d="m1 1h132l25 25-25 25h-132z" fill="none" stroke="#212121" stroke-width="2" stroke-linejoin="round"/>
+          <text x="46" y="35" font-size="24" fill="#212121">Next</text>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script src="js/bundle.min.js"></script>
+  <script>
+    if (typeof Promise === 'undefined') {
+      require('es6-promise').polyfill();
     }
+  </script>
+  <script src="js/app.min.js"></script>
+  <script>
+    (function() {
+      // change url for selected option
+      var choice = document.getElementById('choice');
+      var button = document.getElementById('button');
+      choice.addEventListener('change', function(event) {
+        var value = event.target.value;
+        button.href = 'pages/p0.html#' + value;
+      });
 
-    main()
+      app.loadFont('Noto Serif');
+      app.loadSections();
+    })();
   </script>
 </body>
 </html>
