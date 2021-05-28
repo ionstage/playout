@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Framework for playing content",
   "scripts": {
+    "build": "npm run build:bundle && npm run build:js && npm run build:css",
+    "build:bundle": "uglifyjs js/bundle.js -o build/js/bundle.min.js --comments '/^\\!|^@preserve|^@cc_on|\\bMIT\\b|\\bMPL\\b|\\bGPL\\b|\\(c\\)|License|Copyright/' -c -m",
+    "build:css": "cat css/*.css | cleancss -o build/css/app.min.css",
+    "build:js": "browserify js/app.js --no-bundle-external | uglifyjs -o build/js/app.min.js -c -m",
     "bundle": "browserify -r es6-promise -r webfontloader -o js/bundle.js"
   },
   "dependencies": {
